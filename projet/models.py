@@ -1,23 +1,28 @@
 from projet import db, security
 from flask.ext.security import SQLAlchemyUserDatastore, UserMixin, RoleMixin
-import passlib
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Model, RoleMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True)
-    password = db.Column(db.String(255))
-    active = db.Column(db.Integer)
+    pw_hash = db.Column(db.String(255))
+    active = db.Column(db.Boolean())
     properties = db.relationship('Property', backref='user',
                                 lazy='dynamic')
     role = db.relationship('Role', backref='user', lazy='dynamic')
 
     def __init__(self, email, password):
         self.email = email
-        self.password = passlib.hash.bcrypt.encrypt(password)
+        self.set_password(password)
+
+    def set_password(self, password):
+        self.pw_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.pw_hash, password)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.email
 
 
 class Role(db.Model, UserMixin):
@@ -31,7 +36,7 @@ class Role(db.Model, UserMixin):
         self.description = description
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.name
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security.datastore = user_datastore
