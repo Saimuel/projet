@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+{% block body %}
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <form class="form-signin">
+          <h2 class="form-signin-heading">Bienvenue sur Projet</h2>
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <div class="checkbox">
+            <label>
+            <input type="checkbox" value="remember-me">Remember me
+            </label>
+            </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+          </form>
+          <h3>Vous n'avez pas encore de compte Projet?</h3>
+          <a href="ESSAYER">Commencer une periode d'essaie gratuite de 2 mois</a>
+        </div>
+      </div>
+{% endblock %}

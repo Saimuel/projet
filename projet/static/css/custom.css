@@ -1,7 +1,9 @@
 body {
-  min-height: 100%;
+  padding-top: 70px;
 }
 
-.navbar-static-top {
-  margin-bottom: 19px;
+#test {
+   max-width:100%;
+   border-radius: 20px;
+   box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
