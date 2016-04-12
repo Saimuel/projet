@@ -2,6 +2,7 @@ import sys
 from projet import db
 from projet.models import User
 
+
 def main(argv):
     if argv[0] == "createdb":
         db.create_all()
@@ -16,7 +17,7 @@ def main(argv):
 
     if argv[0] == "test2":
         users = User.query.all()
-        print(users[0].check_password("test"))
+        print(users)
 
 if __name__ == "__main__":
-     main(sys.argv[1:])
+    main(sys.argv[1:])

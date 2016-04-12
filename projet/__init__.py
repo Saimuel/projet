@@ -12,4 +12,5 @@ db = SQLAlchemy(app)
 # Setup Flask-Security
 security = Security(app)
 
-import projet.views, projet.models
+import projet.views
+import projet.models

@@ -11,10 +11,14 @@
               {{ form.password.label }}
               {{ form.password(class="form-control") }}
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+            <div class="form-group">
+              {{ form.confirm.label }}
+              {{ form.confirm(class="form-control") }}
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">S'enregistrer</button>
           </form>
           <h3>Vous n'avez pas encore de compte Projet?</h3>
-          <a href="/register">Commencer une periode d'essaie gratuite de 2 mois</a>
+          <a href="ESSAYER">Commencer une periode d'essaie gratuite de 2 mois</a>
         </div>
       </div>
 {% endblock %}

@@ -2,13 +2,13 @@ from projet import db, security
 from flask.ext.security import SQLAlchemyUserDatastore, UserMixin, RoleMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
 class User(db.Model, RoleMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True)
     pw_hash = db.Column(db.String(255))
     active = db.Column(db.Boolean())
-    properties = db.relationship('Property', backref='user',
-                                lazy='dynamic')
+    properties = db.relationship('Property', backref='user', lazy='dynamic')
     role = db.relationship('Role', backref='user', lazy='dynamic')
 
     def __init__(self, email, password):
